@@ -1,0 +1,141 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+ul {
+    list-style-type: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+      background-color: #111927;
+    background-image: 
+        radial-gradient(at 47% 33%, hsl(162.00, 77%, 40%) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(218.00, 39%, 11%) 0, transparent 55%);
+}
+
+main {
+    flex: 2;
+}
+
+section {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.container {
+    width: 90%;
+margin:auto;
+
+
+}
+
+.content {
+        backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+.result {
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+    color: white;
+    font-size:1.4em;
+}
+footer {
+        backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(176, 245, 230, 0.432);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 20px;
+    color: white;
+}
+
+form {
+    border-radius: 3px;
+    padding: 40px;
+}
+
+input {
+    padding: 20px 20px;
+    width: 100%;
+    line-height: 16px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.5);
+    border: rgba(255, 255, 255, 0.5) 5px solid;
+    outline: none;
+}
+
+h2 {
+    color: whitesmoke;
+    font-size: 2em;
+  
+}
+
+#subbutton {
+    color: #000;
+    font-size:1.7em;
+}
+header {
+    display: flex;
+    font-size: 1.5em;
+    justify-content: space-between;
+    
+    padding: 10px 40px;
+background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+    padding: 10px 10px 10px 20px;
+}
+
+

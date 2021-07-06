@@ -1,0 +1,8 @@
+footer {
+        backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(176, 245, 230, 0.432);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 20px;
+    color: white;
+}

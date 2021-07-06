@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+      background-color: #111927;
+    background-image: 
+        radial-gradient(at 47% 33%, hsl(162.00, 77%, 40%) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(218.00, 39%, 11%) 0, transparent 55%);
+}
+
+main {
+    flex: 2;
+}
+
+section {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.container {
+    width: 90%;
+margin:auto;
+
+
+}
+
+.content {
+        backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+.result {
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+    color: white;
+    font-size:1.4em;
+}

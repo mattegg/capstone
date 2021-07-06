@@ -1,0 +1,25 @@
+form {
+    border-radius: 3px;
+    padding: 40px;
+}
+
+input {
+    padding: 20px 20px;
+    width: 100%;
+    line-height: 16px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.5);
+    border: rgba(255, 255, 255, 0.5) 5px solid;
+    outline: none;
+}
+
+h2 {
+    color: whitesmoke;
+    font-size: 2em;
+  
+}
+
+#subbutton {
+    color: #000;
+    font-size:1.7em;
+}
