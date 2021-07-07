@@ -20,25 +20,79 @@ app.get('/', function (req, res) {
 });
 
 app.listen(8080, function () {
-  console.log('Sentiment Checker App listening on port 8080!');
+  console.log('Travel Planner  App listening on port 8080!');
 });
 
 app.get('/test', function (req, res) {
   res.send(mockAPIResponse);
 });
 
-const baseURL = 'https://api.meaningcloud.com/sentiment-2.1?key=';
-app.post('/userUrl', async (req, res) => {
-  console.log('req.body ===+>', req.body);
-  const response = await fetch(
-    baseURL + apikey + '&lang=en&url=' + req.body.formUrl,
-    { method: 'POST' }
-  );
-  try {
-    const data = await response.json();
+app.post('/processLocation', async (req, res) => {
+  const geonamesKey = process.env.GEONAMES_KEY;
+  const weatherbitKey = process.env.WEATHERBIT_KEY;
+  const pixabayKey = process.env.PIXABAY_KEY;
+  const location = req.body.location;
+  // console.log(location);
+  const geoUrl = `http://api.geonames.org/searchJSON?q=${location}&maxRows=1&username=${geonamesKey}`;
+  console.log(geoUrl);
+  let data = {};
+  await fetch(geoUrl)
+    .then((response) => response.json())
+    .then((response) => {
+      const { lat, lng, toponymName, countryName } = response.geonames[0];
+      data = {
+        toponymName,
+        countryName,
+        lat,
+        lng,
+      };
+    })
+    .catch((error) => console.log('error', error));
 
-    res.send(data);
-  } catch (error) {
-    console.log('error', error);
-  }
+
+  const currentWeather = `https://api.weatherbit.io/v2.0/current?lat=${data.lat}&lon=${data.lng}&key=${weatherbitKey}`;
+  await fetch(currentWeather)
+    .then((response) => response.json())
+    .then((response) => {
+      data = {
+        ...data,
+        curentWeather: response.data[0],
+      };
+    })
+    .catch((error) => console.log('error', error));
+
+    
+  const forecastWeather = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${data.lat}&lon=${data.lng}&key=${weatherbitKey}`;
+  await fetch(forecastWeather)
+    .then((response) => response.json())
+    .then((response) => {
+      data = {
+        ...data,
+        forecastWeather: response.data,
+      };
+    })
+    .catch((error) => console.log('error', error));
+
+   
+   
+    //image
+    let pixabayUrl = `https://pixabay.com/api/?key=${pixabayKey}&q=${data.toponymName}&orientation=horizontal&image_type=photo`;
+    console.log(pixabayUrl);
+    let imageURL = '';
+
+    await fetch(pixabayUrl)
+      .then((response) => response.json())
+      .then((response) => {
+        imageURL = response.hits[0].webformatURL;
+      })
+      .catch((error) => console.log('error', error));
+
+
+    data = {
+      ...data,
+      imageURL,
+    };
+
+  console.log(data);
+  res.send(data);
 });

@@ -2,62 +2,48 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
-    <link href="main.css" rel="stylesheet"></head>
+        <title>Travel Planner</title>
+    </head>
 
     <body>
         <header>
             <div class="">
-               Sentiment Checker. 
+          Travel Planner
             </div>
        
         </header>
 <div class="container">
-<div class="content">
+
 
         <main>
             <section>
-                <h2> Enter URL to Analyse Sentiment</h2>
-                <form class="">
-                    <input id="name" type="text" name="input" value="" placeholder="Enter Url">
-                    <input type="submit" name="" value="Submit" onclick="return Client.handleSubmit(event)">
+                <form class="form">
+                    <input id="name" type="text" name="input" value="" placeholder="Enter Location">
+                    <input id="when" type="text" name="input" value="" placeholder="When are you going?">
+                    <input type="submit" id="subbutton" name="" value="🛩" onclick="return Client.handleSubmit(event)">
                 </form>
             </section>
 
-            <section>
-          <div class="result">
-                <h2>Results</h2>
-<!-- 
-                P+: strong positive 😁
-                P: positive 😊
-                NEU: neutral 😐
-                N: negative 😕
-                N+: strong negative 😤
-                NONE: without polarity 😶
- -->
-            <div id="score"></div>
-            <div id="agreement"></div>
-            <div id="subjectivity"></div>
-            <div id="confident"></div>
-            <div id="ironic"></div>
+            <section class="content">
+        <div class="result">
+
+        <div id="card1" class="thought">Hello! Great to meet you, I would love to help plan your trip. Fill in where you are going and what date you will arrive and I will give you lots of useful information.</div>
+    
+        <div class="cards"></div>
 </div>
+     
+
+
+
             </section>
         </main>
-</div></div>
+</div>
 
         <footer>
-            <p>Sentiment Tester API</p>
+            <p>Travel Planner Example App</p>
         </footer>
-
     <script type="text/javascript" src="main.js"></script></body>
-    <script>
-        // Check that service workers are supported
-        if ('serviceWorker' in navigator) {
-            // Use the window load event to keep the page load performant
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js');
-            });
-        }
-    </script>
+<script>
+    flatpickr('#when', {});
+</script>
 </html>
-

@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "flatpickr": "^4.6.9",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },

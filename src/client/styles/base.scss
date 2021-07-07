@@ -1,0 +1,126 @@
+body {
+    display: flex;
+    flex-direction: column;
+      background-color: #111927;
+    background-image: 
+        radial-gradient(at 47% 33%, rgb(23, 149, 181) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(218.00, 39%, 11%) 0, transparent 55%);
+}
+
+main {
+    flex: 2;
+}
+
+section {
+    max-width: 90%;
+    margin: auto;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    margin-top:  20px;
+    margin-bottom: 20px;
+}
+
+.content {
+        backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+.result {
+    margin-top: 20px;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+    color: black;
+    font-size:1.4em;
+    margin: 10px;
+}
+
+#card1 {
+  margin: 30px auto 30px auto;
+}
+
+.thought {
+  display:flex;
+  background-color:#fff;
+  padding:20px;
+  border-radius:30px;
+  min-width:40px;
+  max-width:600px;
+  min-height:100px;
+  margin:20px;
+  position:relative;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.thought:before,
+.thought:after {
+  content:"";
+  background-color:#fff;
+  border-radius:50%;
+  display:block;
+  position:absolute;
+  z-index:-1;
+}
+.thought:before {
+  width:44px;
+  height:44px;
+  top:-12px;
+  left:28px;
+  box-shadow:-50px 30px 0 -12px #fff;
+}
+.thought:after {
+  bottom:-10px;
+  right:26px;
+  width:30px;
+  height:30px;
+  box-shadow:40px -34px 0 0 #fff,
+             -28px -6px 0 -2px #fff,
+             -24px 17px 0 -6px #fff,
+             -5px 25px 0 -10px #fff;
+  
+}
+
+.card {
+  background-color: rgb(23,52,69);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+font-size: 0.7em;
+
+}
+
+.cards {
+  max-width: 1200px;
+  padding: 30px;
+  margin: 0 auto;
+  display:flex;
+}
+
+.place {
+  color: black;
+  position: relative;
+  top: -10px;
+  font-size: 1.5em;
+}
+.data {
+  color: black;
+}
+
+.cardimg img{
+     object-fit: scale-down;
+    max-width: 400px;
+      border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+font-size: 0.7em;
+}
+.result {
+  min-height: 600px;
+}

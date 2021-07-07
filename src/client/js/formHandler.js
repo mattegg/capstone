@@ -1,11 +1,11 @@
 function handleSubmit(event) {
-    event.preventDefault()
+  event.preventDefault();
 
-    let formUrl = document.getElementById('name').value
+  let location = document.getElementById('name').value;
+  let submittedDate = document.getElementById('when').value;
 
 
-if (Client.checkForName(formUrl)) {
-  const url = 'http://localhost:8080/userUrl';
+  const url = 'http://localhost:8080/processLocation';
   fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
@@ -15,48 +15,52 @@ if (Client.checkForName(formUrl)) {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
     },
-    body: JSON.stringify({ formUrl: formUrl }),
+    body: JSON.stringify({ location: location }),
   })
     .then((res) => res.json())
     .then(function (res) {
+      console.log(res);
+      document.getElementById(
+        'card1'
+      ).innerHTML = `Looks like you are going to ${res.toponymName} I have never been but it sounds lovely. Bet you didnt know the Latitude is ${res.lat} and Longitude is ${res.lng}.`;
+      // weather card
+      if (document.querySelector('.cardimg')) {
+        document.querySelector('.cardimg').remove();
+      }
+      if (document.querySelector('.card')) {
+        document.querySelector('.card').remove();
+      }
 
-// do some faces
-if (res.score_tag=="P+"){
-      document.getElementById('score').innerHTML =
-        'Score: ' + res.score_tag + ' (Strong Positive) 😁';
-}
-if (res.score_tag == 'P') {
-  document.getElementById('score').innerHTML = 'Score: ' + res.score_tag + ' (Positive) 😊';
-}
 
-if (res.score_tag == 'NEU') {
-  document.getElementById('score').innerHTML =
-    'Score: ' + res.score_tag + ' (Neuteral) 😐';
-}
-if (res.score_tag == 'N') {
-  document.getElementById('score').innerHTML =
-    'Score: ' + res.score_tag + ' (Negative) 😕';
-}
-if (res.score_tag == 'N+') {
-  document.getElementById('score').innerHTML =
-    'Score: ' + res.score_tag + ' (Strong Negative) 😤';
-}
-if (res.score_tag == 'NONE') {
-  document.getElementById('score').innerHTML =
-    'Score: ' + res.score_tag + ' (None) 😶';
-}
+      // now we need to do some logic to get date. If the date is future, we display 14 day forecast.
+      let todayDate = new Date();
+      todayDate = todayDate.toISOString().split('T')[0];
+      console.log(todayDate, submittedDate);
+      if (todayDate < submittedDate) {
+       // let type = 'future';
+      } else {
+    
+      let card = document.createElement('div');
+      card.classList.add('card');
+      let image = document.createElement('img');
+      image.src = `https://www.weatherbit.io/static/img/icons/${res.curentWeather.weather.icon}.png`;
+      card.appendChild(image);
+      let text = document.createElement('div');
+      text.innerHTML = ` <div class="place">${res.toponymName}</div>Currently <span class="data">${res.curentWeather.weather.description} </span><br> Temp: <span class="data">${res.curentWeather.temp}°c </span><br> Wind speed:  <span class="data">${res.curentWeather.wind_spd} mph </span>`;
+      card.appendChild(text);
+      let gridCard = document.querySelector('.cards');
+      gridCard.appendChild(card);
+      // end weather card
+      // add picture to the current weather card
+      let cardimg = document.createElement('div');
+      cardimg.classList.add('cardimg');
+      let placeimage = document.createElement('img');
+      placeimage.src = `${res.imageURL}`;
+      cardimg.appendChild(placeimage);
+      gridCard.appendChild(cardimg);
 
-  document.getElementById('agreement').innerHTML =
-    'Agreement: ' + res.agreement;
-      document.getElementById('subjectivity').innerHTML =
-        'Subjectivity: ' + res.subjectivity;
-      document.getElementById('confident').innerHTML =
-        'Confidence: ' + res.confidence;
-      document.getElementById('ironic').innerHTML = 'Irony: ' + res.irony;
+      }
     });
-} else {
-  alert('Not a valid URL, please try again.');
-};
 }
 
-export { handleSubmit }
+export { handleSubmit };
