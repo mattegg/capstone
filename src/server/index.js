@@ -6,6 +6,7 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 var apikey = process.env.API_KEY;
+module.exports = { app };
 
 const cors = require('cors');
 app.use(cors());
