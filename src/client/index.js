@@ -9,4 +9,4 @@ import './styles/form.scss';
 import './styles/header.scss';
 
 
-export { handleSubmit, checkForName, flatpickr};
+export { handleSubmit, flatpickr};
