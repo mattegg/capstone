@@ -28,8 +28,14 @@ function handleSubmit(event) {
         document.querySelector('.cardimg').remove();
       }
       if (document.querySelector('.card')) {
-        document.querySelector('.card').remove();
+       let cardstoremove = document.querySelectorAll('.card');
+       for (let i = 0; i < cardstoremove.length; i++) {
+         cardstoremove[i].remove();
+       }
       }
+        if (document.querySelector('.cardimgL')) {
+          document.querySelector('.cardimgL').remove();
+        }
 
 
       // now we need to do some logic to get date. If the date is future, we display 14 day forecast.
