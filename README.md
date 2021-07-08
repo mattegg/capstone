@@ -4,7 +4,11 @@ Based on the Udacity Front End Web Dev Course. Final Project making use of 3 Api
 
 ## Install / Run Project
 > npm install 
+
+
 > npm run build-dev
+
+
 > npm run start
 
 
