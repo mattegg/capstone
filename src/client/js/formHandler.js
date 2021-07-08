@@ -37,7 +37,31 @@ function handleSubmit(event) {
       todayDate = todayDate.toISOString().split('T')[0];
       console.log(todayDate, submittedDate);
       if (todayDate < submittedDate) {
-       // let type = 'future';
+        let gridCard = document.querySelector('.cards');
+        //document.body.style.backgroundImage = `url('${res.imageURL}')`;
+        // add picture to the current weather card
+        let cardimg = document.createElement('div');
+        cardimg.classList.add('cardimgL');
+        let placeimage = document.createElement('img');
+        placeimage.src = `${res.imageURL}`;
+        cardimg.appendChild(placeimage);
+        gridCard.appendChild(cardimg);
+console.log(placeimage.src);
+        for (let i = 0; i < res.forecastWeather.length; i++) {
+          // loop this forecast for entire 14 days.
+  
+          let card = document.createElement('div');
+          card.classList.add('card');
+          let image = document.createElement('img');
+          image.src = `https://www.weatherbit.io/static/img/icons/${res.forecastWeather[i].weather.icon}.png`;
+          card.appendChild(image);
+          let text = document.createElement('div');
+
+          text.innerHTML = ` <div class="place"> ${res.forecastWeather[i].datetime}</div>Weather: <span class="data">${res.forecastWeather[i].weather.description} </span><br> Max Temp: <span class="data">${res.forecastWeather[i].max_temp}°c </span><br> Wind speed:  <span class="data">${res.forecastWeather[i].wind_spd} mph </span>`;
+          card.appendChild(text);
+          gridCard.appendChild(card);
+          // end weather card
+        }
       } else {
     
       let card = document.createElement('div');
