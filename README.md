@@ -12,3 +12,7 @@ Based on the Udacity Front End Web Dev Course. Final Project making use of 3 Api
 > npm run start
 
 
+## Added Features
+
+- Multi forecast for future dates
+- Weather Icons. 
